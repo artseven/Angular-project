@@ -8,76 +8,39 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var House = (function () {
-    function House(numWin, numFl, houseCol, addr, protect) {
-        this.address = addr;
-        this.numWindows = numWin;
-        this.numFloors = numFl;
-        this.houseColor = houseCol;
-        this.protection = protect;
+var Workers = (function () {
+    function Workers(name, id) {
+        console.log("inside worker's constructor");
+        this.name = name;
+        this.id = id;
     }
-    House.prototype.giveAddress = function () {
-        console.log("Our house address is: " + this.address);
-    };
-    House.prototype.breakWindow = function () {
-        if (this.protection) {
-            console.log("I HAVE PROTECTION! GET OFF MY LAWN!");
-        }
-        if (this.numWindows > 0 && !this.protection) {
-            var newWin = this.numWindows--;
-            console.log("My house now has " + newWin + "windows");
-            console.log("Number if windows is now: " + this.numWindows + "windows");
-        }
-        else {
-            console.log("All the windows are broken");
-        }
-    };
-    House.prototype.changeHouseColor = function (newHouseColor) {
-        this.houseColor = newHouseColor;
-        return this.houseColor;
-    };
-    return House;
+    return Workers;
 }());
-var ivanHouse = new House(4, 1, "black", "5555 Merry Way, Candyland", true);
-var wadsonHouse = new House(7, 3, "white", "1st Penn Ave", false);
-ivanHouse.giveAddress();
-ivanHouse.breakWindow();
-var newColor = ivanHouse.changeHouseColor("blue");
-console.log("Ivan's new house color is: " + newColor);
-var Greeter = (function () {
-    function Greeter(message) {
-        this.message = message;
+var SingingWaiter = (function (_super) {
+    __extends(SingingWaiter, _super);
+    function SingingWaiter(name, id, panache, timeAlloted, voiceLeft) {
+        var _this = _super.call(this, name, id) || this;
+        _this.timeAllotedPerTable = timeAlloted;
+        _this.voiceLeft = voiceLeft;
+        _this.panache = panache;
+        return _this;
     }
-    Greeter.prototype.sayHi = function () {
-        return "<h1>" + this.message + "</h1>";
+    SingingWaiter.prototype.setup = function () {
+        console.log("setting up");
     };
-    return Greeter;
-}());
-var greeter = new Greeter("Hello, world!");
-console.log(greeter.message);
-document.body.innerHTML = greeter.sayHi();
-var Animal = (function () {
-    function Animal() {
-    }
-    Animal.prototype.move = function () {
-        console.log("roamin the earth...");
+    SingingWaiter.prototype.waitTables = function () {
+        console.log("wait tables");
     };
-    return Animal;
-}());
-var Canine = (function (_super) {
-    __extends(Canine, _super);
-    function Canine() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return Canine;
-}(Animal));
-var Dog = (function (_super) {
-    __extends(Dog, _super);
-    function Dog() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Dog.prototype.makeSound = function () {
-        console.log("Woof");
+    SingingWaiter.prototype.sing = function () {
+        console.log("sing");
     };
-    return Dog;
-}(Canine));
+    SingingWaiter.prototype.collectPaycheck = function () {
+        console.log("getting paid :) ");
+    };
+    return SingingWaiter;
+}(Worker));
+var singingWaiter = new SingingWaiter("Ivan", 1234, 10, 20, 5);
+singingWaiter.setup();
+singingWaiter.waitTables();
+singingWaiter.sing();
+singingWaiter.collectPaycheck();
