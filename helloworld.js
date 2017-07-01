@@ -38,7 +38,7 @@ var SingingWaiter = (function (_super) {
         console.log("getting paid :) ");
     };
     return SingingWaiter;
-}(Worker));
+}(Workers));
 var singingWaiter = new SingingWaiter("Ivan", 1234, 10, 20, 5);
 singingWaiter.setup();
 singingWaiter.waitTables();

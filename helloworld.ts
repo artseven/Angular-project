@@ -108,7 +108,7 @@ interface Singer{
     collectPaycheck(): void;
     sing(): void;
 }
-class SingingWaiter extends Worker implements Waiter, Singer{
+class SingingWaiter extends Workers implements Waiter, Singer{
     public timeAllotedPerTable: number;
     public voiceLeft: number;
     private panache: number;
